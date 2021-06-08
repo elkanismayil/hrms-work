@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Data
 @NoArgsConstructor
@@ -22,5 +23,6 @@ public class JobTitle {
 
     @Column(name = "job_desc", unique = true)
     @UniqueElements(message = "This field cannot be repeated")
+    @NotBlank(message = "Job title is mandatory")
     private String jobDescription;
 }

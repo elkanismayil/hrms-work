@@ -72,4 +72,12 @@ public class JobTitleManager implements JobTitleService {
         return new SuccessDataResult("Job title added successfully");
     }
 
+    @Override
+    public DataResult<JobTitle> updateFieldById(String jobDescription, int id) {
+        JobTitle jobTitleToUpdate = jobTitleDao.getById(id);
+        jobTitleToUpdate.setJobDescription(jobDescription);
+        jobTitleDao.save(jobTitleToUpdate);
+        return new SuccessDataResult<>("Successfully updated");
+    }
+
 }

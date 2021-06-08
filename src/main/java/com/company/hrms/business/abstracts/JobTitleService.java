@@ -4,7 +4,6 @@ import com.company.hrms.core.utilities.results.DataResult;
 import com.company.hrms.core.utilities.results.Result;
 import com.company.hrms.entities.concretes.JobTitle;
 
-import java.awt.print.Pageable;
 import java.util.List;
 
 public interface JobTitleService {
@@ -25,4 +24,8 @@ public interface JobTitleService {
     DataResult<List<JobTitle>> findJobTitlesByJobDescriptionEndsWith(String jobDescription);
 
     Result add(JobTitle title);
+
+    DataResult<JobTitle> updateFieldById(String jobDescription, int id);
+
+
 }

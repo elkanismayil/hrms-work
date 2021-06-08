@@ -7,7 +7,6 @@ import com.company.hrms.entities.concretes.JobTitle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -64,6 +63,11 @@ public class JobTitleController {
     @RequestMapping(value = "/add_desc", method = RequestMethod.POST)
     public Result add(@RequestBody JobTitle title) {
         return this.service.add(title);
+    }
+
+    @RequestMapping(value = "/update_desc", method = RequestMethod.POST)
+    public DataResult<JobTitle> updateFieldById(@RequestParam String jobDescription, @RequestParam int id){
+        return service.updateFieldById(jobDescription, id);
     }
 
 }
