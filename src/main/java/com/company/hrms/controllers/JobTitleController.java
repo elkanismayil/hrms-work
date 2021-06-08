@@ -5,6 +5,8 @@ import com.company.hrms.core.utilities.results.DataResult;
 import com.company.hrms.core.utilities.results.Result;
 import com.company.hrms.entities.concretes.JobTitle;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -66,8 +68,18 @@ public class JobTitleController {
     }
 
     @RequestMapping(value = "/update_desc", method = RequestMethod.POST)
-    public DataResult<JobTitle> updateFieldById(@RequestParam String jobDescription, @RequestParam int id){
+    public DataResult<JobTitle> updateFieldById(@RequestParam String jobDescription, @RequestParam int id) {
         return service.updateFieldById(jobDescription, id);
+    }
+
+    @RequestMapping(value = "/delete_by_id/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Integer> deleteById(@PathVariable int id) {
+        var isRemoved = this.service.deleteById(id);
+        if (isRemoved.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

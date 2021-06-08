@@ -10,9 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class JobTitleManager implements JobTitleService {
@@ -78,6 +80,11 @@ public class JobTitleManager implements JobTitleService {
         jobTitleToUpdate.setJobDescription(jobDescription);
         jobTitleDao.save(jobTitleToUpdate);
         return new SuccessDataResult<>("Successfully updated");
+    }
+
+    @Override
+    public Optional<Integer> deleteById(int id) {
+        return this.jobTitleDao.deleteById(id);
     }
 
 }

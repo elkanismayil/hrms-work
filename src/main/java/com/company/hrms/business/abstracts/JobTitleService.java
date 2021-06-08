@@ -3,8 +3,10 @@ package com.company.hrms.business.abstracts;
 import com.company.hrms.core.utilities.results.DataResult;
 import com.company.hrms.core.utilities.results.Result;
 import com.company.hrms.entities.concretes.JobTitle;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface JobTitleService {
     List<JobTitle> getAll();
@@ -26,6 +28,8 @@ public interface JobTitleService {
     Result add(JobTitle title);
 
     DataResult<JobTitle> updateFieldById(String jobDescription, int id);
+
+    Optional<Integer> deleteById(int id);
 
 
 }
