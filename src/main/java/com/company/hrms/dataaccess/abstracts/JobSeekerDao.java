@@ -26,4 +26,7 @@ public interface JobSeekerDao extends JpaRepository<JobSeekers, Integer> {
 
     JobSeekers findByLastNameIgnoreCase(String lastName);
 
+    @Modifying
+    @Query("DELETE FROM JobSeekers js WHERE js.id=?1")
+    void deleteById(Integer id);
 }

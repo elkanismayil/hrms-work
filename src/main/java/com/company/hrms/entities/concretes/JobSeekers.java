@@ -51,11 +51,13 @@ public class JobSeekers {
     @NotNull
     @NotBlank(message = "New password is mandatory")
     @ValidPassword
+    @Size(min = 8, max = 16)
     private String password;
 
     @Column(name = "password_confirm")
     @NotNull
     @NotBlank(message = "Confirm Password is mandatory")
     @ValidPassword
+    @Size(min = 8, max = 16)
     private String passwordConfirm;
 }

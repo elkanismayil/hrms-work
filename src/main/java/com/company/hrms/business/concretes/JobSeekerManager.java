@@ -2,7 +2,6 @@ package com.company.hrms.business.concretes;
 
 import com.company.hrms.business.abstracts.JobSeekerService;
 import com.company.hrms.core.utilities.results.DataResult;
-import com.company.hrms.core.utilities.results.Result;
 import com.company.hrms.core.utilities.results.SuccessDataResult;
 import com.company.hrms.dataaccess.abstracts.JobSeekerDao;
 import com.company.hrms.entities.concretes.JobSeekers;
@@ -13,11 +12,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
+@Transactional
 public class JobSeekerManager implements JobSeekerService {
 
     @Autowired
@@ -96,5 +96,14 @@ public class JobSeekerManager implements JobSeekerService {
     @Override
     public JobSeekers findByLastNameIgnoreCase(String lastName) {
         return jobSeekerDao.findByLastNameIgnoreCase(lastName);
+    }
+
+    @Override
+    public DataResult<JobSeekers> deleteById(Integer id) {
+        if (id==null){
+            throw new JobSeekerNotFound("Id is missing");
+        }
+        this.jobSeekerDao.deleteById(id);
+        return new SuccessDataResult<>("Successfully deleted");
     }
 }

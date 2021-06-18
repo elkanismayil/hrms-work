@@ -26,6 +26,11 @@ public class JobSeekerController {
         return service.findByIdAndUpdate(firstName, lastName, email, identification, password, passwordConfirm, id);
     }
 
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    public void deleteById(@PathVariable("id") Integer id){
+        this.service.deleteById(id);
+    }
+
     @RequestMapping(value = "/get_by_id", method = RequestMethod.GET)
     public JobSeekers findById(@RequestParam int id) {
         return service.findById(id);

@@ -29,4 +29,6 @@ public interface JobSeekerService {
     JobSeekers findByFirstNameIgnoreCase(String firstName);
 
     JobSeekers findByLastNameIgnoreCase(String lastName);
+
+    DataResult<JobSeekers> deleteById(Integer id);
 }
