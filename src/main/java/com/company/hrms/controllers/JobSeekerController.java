@@ -1,13 +1,11 @@
 package com.company.hrms.controllers;
 
 import com.company.hrms.business.abstracts.JobSeekerService;
+import com.company.hrms.core.utilities.results.DataResult;
 import com.company.hrms.entities.concretes.JobSeekers;
 import com.company.hrms.exceptions.NotFoundGivenContentException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,14 +16,34 @@ public class JobSeekerController {
     @Autowired
     private JobSeekerService service;
 
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public JobSeekers add(@RequestBody JobSeekers seekers) {
+        return this.service.add(seekers);
+    }
+
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
+    public DataResult<JobSeekers> findByIdAndUpdate(String firstName, String lastName, String email, String identification, String password, String passwordConfirm, @PathVariable(name = "id", required = false) int id){
+        return service.findByIdAndUpdate(firstName, lastName, email, identification, password, passwordConfirm, id);
+    }
+
     @RequestMapping(value = "/get_by_id", method = RequestMethod.GET)
-    public JobSeekers findById(@RequestParam int id){
+    public JobSeekers findById(@RequestParam int id) {
         return service.findById(id);
     }
 
     @RequestMapping(value = "/get-all", method = RequestMethod.GET)
     public List<JobSeekers> findAll() {
         return service.findAll();
+    }
+
+    @RequestMapping(value = "/get_all_paginated", method = RequestMethod.GET)
+    public List<JobSeekers> findAllPaginated(int pageNo, int pageSize) {
+        return this.service.findAllPaginated(pageNo, pageSize);
+    }
+
+    @RequestMapping(value = "/get_all_sorted", method = RequestMethod.GET)
+    public List<JobSeekers> findAllSorted() {
+        return this.service.findAllSorted();
     }
 
     @RequestMapping(value = "/get_by_email", method = RequestMethod.GET)
