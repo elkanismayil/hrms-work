@@ -37,20 +37,6 @@ public class JobSeekerManager implements JobSeekerService {
         return new SuccessDataResult<>("Successfully updated");
     }
 
-//    @Override
-//    public JobSeekers update(JobSeekers seekers, Integer id) {
-//        Optional<JobSeekers> updateById = jobSeekerDao.findById(id);
-//        JobSeekers newJobSeeker = new JobSeekers();
-//        newJobSeeker.setFirstName(seekers.getFirstName());
-//        newJobSeeker.setLastName(seekers.getLastName());
-//        newJobSeeker.setEmail(seekers.getEmail());
-//        newJobSeeker.setIdentification(seekers.getIdentification());
-//        newJobSeeker.setPassword(seekers.getPassword());
-//        newJobSeeker.setPasswordConfirm(seekers.getPasswordConfirm());
-//
-//        return this.jobSeekerDao.save(newJobSeeker);
-//    }
-
     @Override
     public JobSeekers findById(int id) {
         return jobSeekerDao.findById(id).orElseThrow(() -> new JobSeekerNotFound("Not job seeker was found for the given id : " + id));
