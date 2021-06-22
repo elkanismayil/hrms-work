@@ -49,7 +49,7 @@ public class JobSeekerManager implements JobSeekerService {
 
     @Override
     public List<JobSeekers> findAllSorted() {
-        Sort sort = Sort.by(Sort.Direction.DESC,"firstName");
+        Sort sort = Sort.by(Sort.Direction.ASC,"firstName");
         return this.jobSeekerDao.findAll(sort);
     }
 
