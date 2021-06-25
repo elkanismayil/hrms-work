@@ -23,7 +23,7 @@ public class User implements Serializable {
 
     @Column(name = "email")
     @Email
-    @NotBlank
+    @NotBlank(message = "Email is mandatory")
     @NotNull
     private String email;
 

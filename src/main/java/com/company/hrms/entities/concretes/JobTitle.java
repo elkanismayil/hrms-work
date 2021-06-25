@@ -1,6 +1,5 @@
 package com.company.hrms.entities.concretes;
 
-import com.company.hrms.core.config.annotations.CustomAnnotation;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,4 +24,5 @@ public class JobTitle {
     @UniqueElements(message = "This field cannot be repeated")
     @NotBlank(message = "Job title is mandatory")
     private String jobDescription;
+
 }

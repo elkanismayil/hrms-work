@@ -60,4 +60,7 @@ public class JobSeekers {
     @ValidPassword
     @Size(min = 8, max = 16)
     private String passwordConfirm;
+
+    @Column(name = "active")
+    private Boolean isActive;
 }
