@@ -10,6 +10,7 @@ import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.io.Serializable;
 
 
 @Entity
@@ -18,7 +19,7 @@ import javax.validation.constraints.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(value = "id")
-public class JobSeekers {
+public class JobSeekers implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

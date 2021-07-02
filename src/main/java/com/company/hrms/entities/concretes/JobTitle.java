@@ -7,13 +7,14 @@ import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "job_title")
-public class JobTitle {
+public class JobTitle implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
