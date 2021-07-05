@@ -1,5 +1,6 @@
 package com.company.hrms.entities.concretes;
 
+import com.company.hrms.entities.abstracts.ActiveModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Employers implements Serializable {
+public class Employers extends ActiveModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,9 +39,6 @@ public class Employers implements Serializable {
 
     @Column(name = "job_title_id", nullable = false)
     private Integer jobId;
-
-    @Column(name = "active", nullable = false)
-    private boolean isActive;
 
     @OneToMany(mappedBy = "employers")
     private List<Regions> regions = new ArrayList<>();
