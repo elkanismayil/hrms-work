@@ -72,6 +72,11 @@ public class JobTitleManager implements JobTitleService {
         return this.jobTitleDao.findByStatusTrue();
     }
 
+    @Override
+    public List<JobTitle> findByStatusFalse() {
+        return jobTitleDao.findByStatusFalse();
+    }
+
 
     @Override
     public Result add(JobTitle title) {

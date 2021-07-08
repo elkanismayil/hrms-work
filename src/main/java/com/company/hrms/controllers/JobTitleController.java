@@ -38,8 +38,16 @@ public class JobTitleController {
         return this.service.getAllSorted();
     }
 
+    @RequestMapping(value = "/get_jobs_active", method = RequestMethod.GET)
     public DataResult<List<JobTitle>> getByStatusIsTrue(){
-        return new SuccessDataResult<>(this.service.findByStatusTrue(),"Success!");
+        List<JobTitle> byStatusTrue = service.findByStatusTrue();
+        return new SuccessDataResult<>(byStatusTrue,"Success!");
+    }
+
+    @RequestMapping(value = "/get_jobs_inactive", method = RequestMethod.GET)
+    public DataResult<List<JobTitle>> getByStatusIsFalse(){
+        List<JobTitle> byStatusFalse = service.findByStatusFalse();
+        return new SuccessDataResult<>(byStatusFalse,"Success!");
     }
 
     @RequestMapping(value = "/get_by_id", method = RequestMethod.GET)
