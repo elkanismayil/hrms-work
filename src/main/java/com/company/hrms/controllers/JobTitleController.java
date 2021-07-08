@@ -3,6 +3,7 @@ package com.company.hrms.controllers;
 import com.company.hrms.business.abstracts.JobTitleService;
 import com.company.hrms.core.utilities.results.DataResult;
 import com.company.hrms.core.utilities.results.Result;
+import com.company.hrms.core.utilities.results.SuccessDataResult;
 import com.company.hrms.entities.concretes.JobTitle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,6 +36,10 @@ public class JobTitleController {
     @RequestMapping(value = "/get_all_sorted_asc", method = RequestMethod.GET)
     public DataResult<List<JobTitle>> getAllSorted() {
         return this.service.getAllSorted();
+    }
+
+    public DataResult<List<JobTitle>> getByStatusIsTrue(){
+        return new SuccessDataResult<>(this.service.findByStatusTrue(),"Success!");
     }
 
     @RequestMapping(value = "/get_by_id", method = RequestMethod.GET)

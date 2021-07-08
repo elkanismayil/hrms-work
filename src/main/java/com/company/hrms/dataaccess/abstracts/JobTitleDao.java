@@ -23,7 +23,7 @@ public interface JobTitleDao extends JpaRepository<JobTitle, Integer> {
     @Query(value = "INSERT INTO JobTitle (jobDescription) VALUES (:jobDescription)", nativeQuery = true)
     JobTitle insertIntoDb(String jobDescription);
 
-//    List<JobTitle> findByIsActive
+    List<JobTitle> findByStatusTrue();
 
     @Modifying
     @Query("delete from JobTitle j where j.id=:id")

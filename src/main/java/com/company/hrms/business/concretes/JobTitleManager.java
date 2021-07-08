@@ -68,6 +68,12 @@ public class JobTitleManager implements JobTitleService {
     }
 
     @Override
+    public List<JobTitle> findByStatusTrue() {
+        return this.jobTitleDao.findByStatusTrue();
+    }
+
+
+    @Override
     public Result add(JobTitle title) {
         this.jobTitleDao.save(title);
         return new SuccessDataResult("Job title added successfully");

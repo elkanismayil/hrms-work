@@ -24,6 +24,8 @@ public interface JobTitleService {
 
     DataResult<List<JobTitle>> findJobTitlesByJobDescriptionEndsWith(String jobDescription);
 
+    List<JobTitle> findByStatusTrue();
+
     Result add(JobTitle title);
 
     DataResult<JobTitle> updateFieldById(String jobDescription, int id);

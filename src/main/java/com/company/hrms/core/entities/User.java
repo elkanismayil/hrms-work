@@ -1,5 +1,6 @@
 package com.company.hrms.core.entities;
 
+import com.company.hrms.entities.concretes.JobTitle;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
