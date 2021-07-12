@@ -4,6 +4,7 @@ import com.company.hrms.entities.abstracts.StatusModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.tomcat.jni.Address;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -42,5 +43,10 @@ public class Employers extends StatusModel implements Serializable {
 
     @OneToMany(mappedBy = "employers")
     private List<Regions> regions = new ArrayList<>();
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "salary_id", referencedColumnName = "salary_id")
+    private Salary salary;
+
 
 }

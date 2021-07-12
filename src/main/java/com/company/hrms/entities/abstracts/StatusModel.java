@@ -1,5 +1,6 @@
 package com.company.hrms.entities.abstracts;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
@@ -12,7 +13,7 @@ import java.util.Date;
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 @Data
-@JsonIgnoreProperties(value = {"is_active", "created_at", "updated_at"}, allowGetters = true)
+//@JsonIgnoreProperties(value = {"is_active", "created_at", "updated_at"}, allowGetters = true)
 public abstract class StatusModel {
 
     @Column(name = "is_active")
@@ -21,10 +22,12 @@ public abstract class StatusModel {
     @Temporal(TemporalType.DATE)
     @Column(name = "created_at", nullable = false, updatable = false)
     @CreatedDate
+    @JsonIgnore
     private Date createdAt;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "updated_at", nullable = false)
     @LastModifiedDate
+    @JsonIgnore
     private Date updatedAt;
 }

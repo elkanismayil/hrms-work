@@ -25,4 +25,6 @@ public class Regions implements Serializable {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
     private Employers employers;
+
+
 }

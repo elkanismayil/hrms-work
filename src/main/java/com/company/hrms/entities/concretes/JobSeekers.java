@@ -1,15 +1,16 @@
 package com.company.hrms.entities.concretes;
 
-import com.company.hrms.core.config.annotations.ValidPassword;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 
@@ -51,14 +52,12 @@ public class JobSeekers implements Serializable {
     @Column(name = "password")
     @NotNull
     @NotBlank(message = "New password is mandatory")
-    @ValidPassword
     @Size(min = 8, max = 16)
     private String password;
 
     @Column(name = "password_confirm")
     @NotNull
     @NotBlank(message = "Confirm Password is mandatory")
-    @ValidPassword
     @Size(min = 8, max = 16)
     private String passwordConfirm;
 
