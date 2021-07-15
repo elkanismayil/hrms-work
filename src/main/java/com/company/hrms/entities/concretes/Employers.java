@@ -1,10 +1,9 @@
 package com.company.hrms.entities.concretes;
 
-import com.company.hrms.entities.abstracts.StatusModel;
+import com.company.hrms.entities.abstracts.AuditModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.tomcat.jni.Address;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,7 +15,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Employers extends StatusModel implements Serializable {
+public class Employers extends AuditModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

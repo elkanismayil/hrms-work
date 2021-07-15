@@ -3,7 +3,6 @@ package com.company.hrms.entities.concretes;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -23,6 +22,8 @@ public class Countries implements Serializable {
     @Column(name = "country_name")
     private String name;
 
-    @Column(name = "region_id")
-    private Integer regionId;
+    @ManyToOne(targetEntity = Regions.class,fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name = "region_id")
+    private Regions regions;
+
 }

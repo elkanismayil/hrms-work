@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "regions")
@@ -25,6 +26,9 @@ public class Regions implements Serializable {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
     private Employers employers;
+
+    @OneToMany(mappedBy = "regions", targetEntity = Countries.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Countries> countries;
 
 
 }

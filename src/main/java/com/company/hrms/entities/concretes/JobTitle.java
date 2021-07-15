@@ -1,6 +1,6 @@
 package com.company.hrms.entities.concretes;
 
-import com.company.hrms.entities.abstracts.StatusModel;
+import com.company.hrms.entities.abstracts.AuditModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,7 +15,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Entity
 @Table(name = "job_title")
-public class JobTitle extends StatusModel implements Serializable {
+public class JobTitle extends AuditModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,5 +26,8 @@ public class JobTitle extends StatusModel implements Serializable {
     @UniqueElements(message = "This field cannot be repeated")
     @NotBlank(message = "Job title is mandatory")
     private String jobDescription;
+
+    @Column(name = "is_active")
+    private boolean status = false;
 
 }
