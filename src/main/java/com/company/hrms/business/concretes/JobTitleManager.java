@@ -33,13 +33,13 @@ public class JobTitleManager implements JobTitleService {
     @Override
     public DataResult<List<JobTitle>> getAllPaginated(int pageNo, int pageSize) {
         Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
-        return new SuccessDataResult<>(this.jobTitleDao.findAll(pageable).getContent(),"Success!");
+        return new SuccessDataResult<>(this.jobTitleDao.findAll(pageable).getContent(), "Success!");
     }
 
     @Override
     public DataResult<List<JobTitle>> getAllSorted() {
-        Sort sort = Sort.by(Sort.Direction.DESC,"id");
-        return new SuccessDataResult<>(this.jobTitleDao.findAll(sort),"Successfully sorted");
+        Sort sort = Sort.by(Sort.Direction.DESC, "id");
+        return new SuccessDataResult<>(this.jobTitleDao.findAll(sort), "Successfully sorted");
     }
 
     @Override
