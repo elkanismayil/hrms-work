@@ -1,8 +1,6 @@
 package com.company.hrms.entities.concretes;
 
 import com.company.hrms.entities.abstracts.AuditModel;
-import com.company.hrms.utils.MathUtil;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -35,10 +33,9 @@ public class JobTitle extends AuditModel implements Serializable {
     @Column(name = "is_active")
     private boolean status = false;
 
-    @Column(name = "open_position", nullable = false, insertable = false, updatable = false)
+    @Column(name = "open_position", nullable = false)
     @Generated(value = GenerationTime.ALWAYS)
-    @JsonIgnore
-    private Integer openPosition = MathUtil.findRandom();
+    private Integer openPosition;
 
     @Column(name = "deadline")
     @Temporal(value = TemporalType.DATE)

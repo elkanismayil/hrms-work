@@ -34,5 +34,17 @@ public interface JobTitleService {
 
     Optional<Integer> deleteById(int id);
 
+    List<JobTitle> findByStatusTrueOrderByCreatedAtAsc();
+
+    List<JobTitle> findByStatusTrueOrderByCreatedAtDesc();
+
+    List<JobTitle> findByStatusFalseOrderByCreatedAtAsc();
+
+    List<JobTitle> findByStatusFalseOrderByCreatedAtDesc();
+
+    List<JobTitle> findByStatusTrueOrderByDeadlineAsc();
+
+    List<JobTitle> findByStatusTrueOrderByDeadlineDesc();
+
 
 }

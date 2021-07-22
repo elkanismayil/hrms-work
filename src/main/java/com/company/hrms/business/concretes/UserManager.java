@@ -30,6 +30,6 @@ public class UserManager implements UserService {
 
     @Override
     public DataResult<List<User>> findAllUsers() {
-        return new SuccessDataResult<>(this.userDAO.findAll(),"All users listed");
+        return new SuccessDataResult<>(this.userDAO.findAll(), "All users listed");
     }
 }

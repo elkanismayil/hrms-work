@@ -97,4 +97,34 @@ public class JobTitleManager implements JobTitleService {
         return this.jobTitleDao.deleteById(id);
     }
 
+    @Override
+    public List<JobTitle> findByStatusTrueOrderByCreatedAtAsc() {
+        return this.jobTitleDao.findByStatusTrueOrderByCreatedAtAsc();
+    }
+
+    @Override
+    public List<JobTitle> findByStatusTrueOrderByCreatedAtDesc() {
+        return this.jobTitleDao.findByStatusTrueOrderByCreatedAtDesc();
+    }
+
+    @Override
+    public List<JobTitle> findByStatusFalseOrderByCreatedAtAsc() {
+        return this.jobTitleDao.findByStatusFalseOrderByCreatedAtAsc();
+    }
+
+    @Override
+    public List<JobTitle> findByStatusFalseOrderByCreatedAtDesc() {
+        return this.jobTitleDao.findByStatusFalseOrderByCreatedAtDesc();
+    }
+
+    @Override
+    public List<JobTitle> findByStatusTrueOrderByDeadlineAsc() {
+        return this.jobTitleDao.findByStatusTrueOrderByDeadlineAsc();
+    }
+
+    @Override
+    public List<JobTitle> findByStatusTrueOrderByDeadlineDesc() {
+        return this.jobTitleDao.findByStatusTrueOrderByDeadlineDesc();
+    }
+
 }

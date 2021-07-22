@@ -27,6 +27,18 @@ public interface JobTitleDao extends JpaRepository<JobTitle, Integer> {
 
     List<JobTitle> findByStatusFalse();
 
+    List<JobTitle> findByStatusTrueOrderByCreatedAtAsc();
+
+    List<JobTitle> findByStatusTrueOrderByCreatedAtDesc();
+
+    List<JobTitle> findByStatusFalseOrderByCreatedAtAsc();
+
+    List<JobTitle> findByStatusFalseOrderByCreatedAtDesc();
+
+    List<JobTitle> findByStatusTrueOrderByDeadlineAsc();
+
+    List<JobTitle> findByStatusTrueOrderByDeadlineDesc();
+
     @Modifying
     @Query("delete from JobTitle j where j.id=:id")
     Optional<Integer> deleteById(@Param("id") int id);
