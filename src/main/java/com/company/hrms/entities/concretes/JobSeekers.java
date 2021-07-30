@@ -1,6 +1,7 @@
 package com.company.hrms.entities.concretes;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.*;
+import jdk.jfr.BooleanFlag;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,7 +20,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties(value = "id")
+@JsonPropertyOrder(value = {"firstName", "lastName", "identification", "email", "website", "isActive"})
 public class JobSeekers implements Serializable {
 
     @Id
@@ -51,7 +52,7 @@ public class JobSeekers implements Serializable {
 
     @Column(name = "password")
     @NotNull
-    @NotBlank(message = "New password is mandatory")
+    @NotBlank(message = "Password is mandatory")
     @Size(min = 8, max = 16)
     private String password;
 
@@ -61,6 +62,10 @@ public class JobSeekers implements Serializable {
     @Size(min = 8, max = 16)
     private String passwordConfirm;
 
-    @Column(name = "active")
-    private Boolean isActive;
+    @Column(name = "website")
+    private String website;
+
+    @Column(name = "is_active")
+    @BooleanFlag
+    private Boolean isActive = false;
 }

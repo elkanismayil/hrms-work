@@ -1,21 +1,47 @@
 package com.company.hrms;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
-@EntityScan("com.company.hrms.entities.concretes")
-@EnableJpaRepositories("com.company.hrms.dataaccess.abstracts")
-@ComponentScan("com.company.hrms.core.dataaccess")
+@Configuration
 @EnableSwagger2
-public class HrmsApplication {
+public class HrmsApplication implements ApplicationRunner {
+
+    private static final Logger logger = LogManager.getLogger(HrmsApplication.class);
 
     public static void main(String[] args) {
         SpringApplication.run(HrmsApplication.class, args);
     }
+
+    @Bean
+    public Docket api() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.company.hrms.controllers"))
+                .paths(PathSelectors.any())
+                .build();
+    }
+
+    @Override
+    public void run(ApplicationArguments args) {
+        logger.debug("Debugging log");
+        logger.info("Info log");
+        logger.warn("Hey, This is a warning!");
+        logger.error("Oops! We have an Error. OK");
+        logger.fatal("Damn! Fatal error. Please fix me.");
+    }
+
 
 }
